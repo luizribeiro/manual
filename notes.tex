@@ -1,0 +1,142 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[top=2cm,left=2cm,right=2cm,bottom=2cm]{geometry}
+\usepackage[brazil]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{listings}
+\lstset{language=C++,
+	basicstyle=\footnotesize,
+	showstringspaces=false,
+	tabsize=4,
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=1,
+	numbersep=5pt,
+	breaklines=true,
+	extendedchars=true,
+	frame=tb
+}
+
+\begin{document}
+	\twocolumn
+	\tableofcontents
+	\onecolumn
+
+	\section{Utilidades}
+		\subsection{.vimrc}
+			\lstinputlisting{misc/vimrc}
+		\subsection{Makefile}
+			\lstinputlisting{misc/Makefile}
+	
+	\section{Estruturas de Dados}
+		\subsection{Heap Binário}
+			\lstinputlisting{algoritmos/heap.cpp}
+		\subsection{Union-Find}
+			\lstinputlisting{algoritmos/union-find.cpp}
+		\subsection{Lowest Common Ancestor}
+			% TODO
+
+	\section{Ordenação}
+		\begin{tabular}{l l l l l}
+			\bf{Algoritmo}	& \bf{Caso Médio}	& \bf{Pior Caso}	& \bf{Memória}	& \bf{Estável}	\\
+			\hline
+			Bubble Sort		& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
+			Insertion Sort	& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
+			Merge Sort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(n)\)		& sim			\\
+			Heapsort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(1)\)		& não			\\
+			Quicksort		& \(O(n \log n)\)	& \(O(n^2)\)		& \(O(\log n)\) & não			\\
+			\hline
+			Counting Sort	& \(O(n + 2^k)\)	& \(O(n + 2^k)\)	& \(O(n + 2^k)\) & sim			\\
+			Bucket Sort		& \(O(n \cdot k)\)	& \(O(n^2\cdot k)\)	& \(O(n \cdot k)\) & sim			\\
+		\end{tabular}
+		\subsection{Bubble Sort}
+			\lstinputlisting{algoritmos/bubblesort.cpp}
+		\subsection{Merge Sort}
+			\lstinputlisting{algoritmos/mergesort.cpp}
+		\subsection{Quicksort}
+			\lstinputlisting{algoritmos/quicksort.cpp}
+		\subsection{Counting Sort}
+			\lstinputlisting{algoritmos/countingsort.cpp}
+	
+	\section{Matemática}
+		\subsection{Bigmod}
+			Propriedade:
+			\[ (A \cdot B \cdot C) \bmod N = ((A \bmod N) \cdot (B \bmod N) \cdot (C \bmod N)) \bmod N \]
+			\[ r = b^p \bmod m \]
+			\lstinputlisting{algoritmos/bigmod.cpp}
+		\subsection{Long Integer}
+			\lstinputlisting{algoritmos/bignum.cpp}
+		\subsection{Sieve de Números Primos}
+			\lstinputlisting{algoritmos/sieve.cpp}
+		\subsection{Máximo Divisor Comum}
+			\lstinputlisting{algoritmos/gcd.cpp}
+		\subsection{Mínimo Múltiplo Comum}
+			\lstinputlisting{algoritmos/mmc.cpp}
+		\subsection{Combinação}
+			\[ C_n^k = {n! \over {k! \cdot (n - k)!}} \]
+			\lstinputlisting{algoritmos/comb.cpp}
+		\subsection{Floyd's Cycle-Finding}
+			\lstinputlisting{algoritmos/floydcycle.cpp}
+
+	\section{Grafos}
+		\subsection{Caminho mínimo}
+			\subsubsection{Floyd-Warshall}
+				Tempo: \( \Theta(n^3)\)
+				\lstinputlisting{algoritmos/floyd-warshall.cpp}
+			\subsubsection{Dijkstra}
+				Tempo: \( O(|V|^2) \)
+				% TODO
+			\subsubsection{Dijkstra com Heap}
+				Tempo: \( O(|E| + |V| \log |V|) \)
+				% TODO
+			\subsubsection{Bellman-Ford}
+				\lstinputlisting{algoritmos/bellman-ford.cpp}
+		\subsection{Árvore Geradora Mínima}
+			\subsubsection{Prim}
+				% TODO
+			\subsubsection{Kruskal}
+				\lstinputlisting{algoritmos/kruskal.cpp}
+			\subsubsection{Boruvka}
+				% TODO
+		\subsection{Fluxo Máximo e Corte Mínimo}
+			\subsubsection{Edmonds-Karp}
+				Tempo: \( O(n!) \) % TODO: arrumar o tempo
+				\lstinputlisting{algoritmos/ford-fulkerson.cpp}
+			\subsubsection{Stoer-Wagner}
+				Algoritmo para encontrar o corte mínimo (não s-t) em um grafo. A implementação abaixo é \(O(n^3)\).
+				\lstinputlisting{algoritmos/stoer-wagner.cpp}
+		\subsection{Aresta de Corte}
+			\lstinputlisting{algoritmos/bridge.cpp}
+		\subsection{Ponto de Articulação}
+			\lstinputlisting{algoritmos/pontoart.cpp}
+		\subsection{Caminho Euleriano}
+			% TODO
+		\subsection{Ciclo Euleriano}
+			% TODO
+
+	\section{Programação Dinâmica}
+		% TODO
+	
+	\section{Geometria Computacional}
+		% TODO
+
+	\section{Outros}
+		\subsection{Kadane 1D}
+			Tempo: \(\Theta(n)\)
+			\lstinputlisting{algoritmos/kadane1d.cpp}
+		\subsection{Kadane 2D}
+			Tempo: \(O(n^3)\)
+			% TODO
+		\subsection{Números Romanos}
+			\lstinputlisting{algoritmos/romanos.cpp}
+		\subsection{Template}
+			\lstinputlisting{algoritmos/template.cpp}
+
+	\twocolumn
+	\section{Formulário}
+		\subsection{Somatórios}
+			\[ \sum_{k = 1}^{n} k = \frac{n \cdot (n + 1)}{2} \]
+			\[ \sum_{k = 1}^{n} k^2 = \frac{n \cdot (n + 1) \cdot (2n + 1)}{6} \]
+			\[ \sum_{k = 1}^{n} k^3 = \bigg[\frac{n \cdot (n + 1)}{2}\bigg]^2 \]
+\end{document}
