@@ -28,6 +28,8 @@
 			\lstinputlisting{misc/vimrc}
 		\subsection{Makefile}
 			\lstinputlisting{misc/Makefile}
+		\subsection{Template}
+			\lstinputlisting{algoritmos/template.cpp}
 	
 	\section{Estruturas de Dados}
 		\subsection{Heap Binário}
@@ -119,8 +121,23 @@
 		% TODO
 	
 	\section{Geometria Computacional}
+		\lstinputlisting{algoritmos/geometry-defs.cpp}
 		\subsection{Intersecção de Segmentos}
 			\lstinputlisting{algoritmos/segments-intersect.cpp}
+		\subsection{Teste de Convexidade}
+			Algoritmo para testar se um polígono é convexo ou não.
+			% TODO
+		\subsection{Área de um Polígono}
+			\subsubsection{Convexo}
+				Se o polígono está no sentido anti-horário, a área é positiva. Se estiver no sentido horário, a área é negativa.
+				\lstinputlisting{algoritmos/convex-area.cpp}
+			\subsubsection{Qualquer}
+				\lstinputlisting{algoritmos/poly-area.cpp}
+		\subsection{Convex Hull}
+			\subsubsection{Graham Scan}
+				\lstinputlisting{algoritmos/graham-scan.cpp}
+			\subsubsection{Jarvis March}
+				\lstinputlisting{algoritmos/jarvis-march.cpp}
 
 	\section{Outros}
 		\subsection{Kadane 1D}
@@ -133,8 +150,6 @@
 			\lstinputlisting{algoritmos/romanos.cpp}
 		\subsection{Calendário}
 			\lstinputlisting{algoritmos/calendario.cpp}
-		\subsection{Template}
-			\lstinputlisting{algoritmos/template.cpp}
 
 	\twocolumn
 	\section{Formulário}
