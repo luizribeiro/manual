@@ -3,14 +3,6 @@
 
 point pivot;
 
-int distsqr(point a, point b) {
-	return (a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y);
-}
-
-int cross(point a, point b, point c) {
-	return (b.x - a.x)*(c.y - a.y) - (c.x - a.x)*(b.y - a.y);
-}
-
 bool graham_cmp(point a, point b) {
 	int t = cross(pivot, b, a);
 	if(t < 0) return true;

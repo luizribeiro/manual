@@ -1,12 +1,10 @@
-typedef struct { int x, y; } point;
-
 bool on_segment(point i, point j, point k) {
 	return min(i.x, j.x) <= k.x && k.x <= max(i.x, j.x)
 			&& min(i.y, j.y) <= k.y && k.y <= max(i.y, j.y);
 }
 
 int direction(point a, point b, point c) {
-	return (c.x - a.x)*(b.y - a.y) - (b.x - a.x)*(c.y - a.y);
+	return cross(a, c, b);
 }
 
 /* true se os segmentos ab e cd intercedem */
