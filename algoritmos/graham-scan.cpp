@@ -16,25 +16,18 @@ void graham_scan(polygon &q, polygon &p) {
 	int i;
 
 	/* pivot = ponto mais abaixo e mais a esquerda */
-	pivot.x = p.p[0].x;
-	pivot.y = p.p[0].y;
-	for(i = 1; i < p.n; i++) {
-		if(p.p[i].y < pivot.y || (p.p[i].y == pivot.y && p.p[i].x < pivot.x)) {
-			pivot.x = p.p[i].x;
-			pivot.y = p.p[i].y;
-		}
-	}
+	pivot = p.p[0];
+	for(i = 1; i < p.n; i++)
+		if(p.p[i].y < pivot.y || (p.p[i].y == pivot.y && p.p[i].x < pivot.x))
+			pivot = p.p[i];
 
 	/* ordena s no sentido anti-horario, com relacao ao pivot */
 	sort(s.begin(), s.end(), graham_cmp);
 
 	/* remove elementos repetidos de s */
-	for(i = 2; i < (int)s.size(); i++) {
-		if(cross(pivot, s[i], s[i-1]) == 0) {
-			s.erase(s.begin()+i-1);
-			i--;
-		}
-	}
+	for(i = 2; i < (int)s.size(); i++)
+		if(cross(pivot, s[i], s[i-1]) == 0)
+			s.erase(s.begin() + --i);
 
 	/* here comes the fun */
 	q.p[0] = s[0];

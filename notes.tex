@@ -122,8 +122,14 @@
 	
 	\section{Geometria Computacional}
 		\lstinputlisting{algoritmos/geometry-defs.cpp}
+		\subsection{Círculos}
+			\lstinputlisting{algoritmos/circle.cpp}
 		\subsection{Intersecção de Segmentos}
 			\lstinputlisting{algoritmos/segments-intersect.cpp}
+		\subsection{Ponto dentro de Polígono}
+			\subsubsection{Solução 1}
+				Constante de tempo baixa, não faz uso de funções de trigonometria. Retorna \emph{true} se o ponto está sob um dos lados do polígono (facilmente alterável).
+				\lstinputlisting{algoritmos/inpoly1.cpp}
 		\subsection{Teste de Convexidade}
 			Algoritmo para testar se um polígono é convexo ou não.
 			% TODO
@@ -157,4 +163,12 @@
 			\[ \sum_{k = 1}^{n} k = \frac{n \cdot (n + 1)}{2} \]
 			\[ \sum_{k = 1}^{n} k^2 = \frac{n \cdot (n + 1) \cdot (2n + 1)}{6} \]
 			\[ \sum_{k = 1}^{n} k^3 = \bigg[\frac{n \cdot (n + 1)}{2}\bigg]^2 \]
+		\subsection{Geometria}
+			\subsubsection{Triângulos}
+				\emph{Área, dados lados}
+				\[ S = \sqrt{p (p - a) (p - b) (p - c)} \]
+				\[ p = \frac{a + b + c}{2} \]
+				\emph{Área, dadas medianas}
+				\[ S = \frac{4}{3} \sqrt{q (q - u) (q - v) (q - w)} \]
+				\[ q = \frac{u + v + w}{2} \]
 \end{document}

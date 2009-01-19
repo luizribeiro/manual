@@ -1,5 +1,6 @@
 typedef struct { int x, y; } point;
 typedef struct { point p[MAX_VERTS]; int n; } polygon;
+typedef struct { point c; double r; } circle;
 
 int distsqr(point a, point b) {
 	return (a.x - b.x)*(a.x - b.x) + (a.y - b.y)*(a.y - b.y);
