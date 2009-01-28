@@ -105,6 +105,9 @@
 			\subsubsection{Edmonds-Karp}
 				Tempo: \( O(n!) \) % TODO: arrumar o tempo
 				\lstinputlisting{algoritmos/ford-fulkerson.cpp}
+			\subsubsection{Min-Cost Max-Flow}
+				Tempo: \( O(n^2 m B) \)
+				\lstinputlisting{algoritmos/mincostmaxflow.cpp}
 			\subsubsection{Stoer-Wagner}
 				Algoritmo para encontrar o corte mínimo (não s-t) em um grafo. A implementação abaixo é \(O(n^3)\).
 				\lstinputlisting{algoritmos/stoer-wagner.cpp}
@@ -165,10 +168,10 @@
 			\[ \sum_{k = 1}^{n} k^3 = \bigg[\frac{n \cdot (n + 1)}{2}\bigg]^2 \]
 		\subsection{Geometria}
 			\subsubsection{Triângulos}
-				\emph{Área, dados lados}
+				\emph{Área, dados lados a, b, c}
 				\[ S = \sqrt{p (p - a) (p - b) (p - c)} \]
 				\[ p = \frac{a + b + c}{2} \]
-				\emph{Área, dadas medianas}
+				\emph{Área, dadas medianas u, v, w}
 				\[ S = \frac{4}{3} \sqrt{q (q - u) (q - v) (q - w)} \]
 				\[ q = \frac{u + v + w}{2} \]
 \end{document}
