@@ -1,7 +1,3 @@
-#include <cstdio>
-
-#define N 128
-
 int n;
 int mpref[N][N], wpref[N][N]; /* preencher com lista de preferencias */
 int mmatch[N], wmatch[N]; /* iniciar com -1 */
