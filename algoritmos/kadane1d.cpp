@@ -1,4 +1,4 @@
-int max_subarray(int a[], int n) {
+int kadane(int a[], int n) {
 	int max = 0, s = 0;
 	int i;
 
