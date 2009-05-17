@@ -42,8 +42,10 @@
 	
 	\section{Estruturas de Dados}
 		\subsection{Heap Binário}
+			Tempo: \( O(\log n) \) em todas as operações.
 			\lstinputlisting{algoritmos/heap.cpp}
 		\subsection{Union-Find}
+			Tempo: \( O(\alpha(n)) \) em todas as operações.
 			\lstinputlisting{algoritmos/union-find.cpp}
 		\subsection{Lowest Common Ancestor}
 			% TODO
@@ -108,11 +110,13 @@
 				Tempo: \( O(|E| + |V| \log |V|) \)
 				% TODO
 			\subsubsection{Bellman-Ford}
+				Tempo: \( O(|V| |E|) \)
 				\lstinputlisting{algoritmos/bellman-ford.cpp}
 		\subsection{Árvore Geradora Mínima}
 			\subsubsection{Prim}
 				% TODO
 			\subsubsection{Kruskal}
+				Tempo: \( O(|E| \log |V|) \) ou \( O(|E| \cdot \alpha(|V|)) \) caso as arestas estejam pré-ordenadas.
 				\lstinputlisting{algoritmos/kruskal.cpp}
 			\subsubsection{Boruvka}
 				% TODO
@@ -159,8 +163,10 @@
 				\lstinputlisting{algoritmos/poly-area.cpp}
 		\subsection{Convex Hull}
 			\subsubsection{Graham Scan}
+				Tempo: \(O(n \log n)\)
 				\lstinputlisting{algoritmos/graham-scan.cpp}
 			\subsubsection{Jarvis March}
+				Tempo: \(O(n h)\)
 				\lstinputlisting{algoritmos/jarvis-march.cpp}
 
 	\section{Outros}
