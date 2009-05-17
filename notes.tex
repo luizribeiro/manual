@@ -4,6 +4,11 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\hypersetup{
+	colorlinks=false,
+	linkbordercolor={1 1 1},
+	citebordercolor={1 1 1}
+}
 \usepackage{listings}
 \lstset{language=C++,
 	basicstyle=\footnotesize,
@@ -18,8 +23,12 @@
 	frame=tb
 }
 
+\title{sudo make a manual}
+\author{sudo make a sandwich}
+
 \begin{document}
 	\twocolumn
+	\maketitle
 	\tableofcontents
 	\onecolumn
 
@@ -40,18 +49,24 @@
 			% TODO
 
 	\section{Ordenação}
-		\begin{tabular}{l l l l l}
-			\bf{Algoritmo}	& \bf{Caso Médio}	& \bf{Pior Caso}	& \bf{Memória}	& \bf{Estável}	\\
-			\hline
-			Bubble Sort		& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
-			Insertion Sort	& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
-			Merge Sort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(n)\)		& sim			\\
-			Heapsort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(1)\)		& não			\\
-			Quicksort		& \(O(n \log n)\)	& \(O(n^2)\)		& \(O(\log n)\) & não			\\
-			\hline
-			Counting Sort	& \(O(n + 2^k)\)	& \(O(n + 2^k)\)	& \(O(n + 2^k)\) & sim			\\
-			Bucket Sort		& \(O(n \cdot k)\)	& \(O(n^2\cdot k)\)	& \(O(n \cdot k)\) & sim			\\
-		\end{tabular}
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{l l l l l}
+				\hline\hline
+				\bf{Algoritmo}	& \bf{Caso Médio}	& \bf{Pior Caso}	& \bf{Memória}	& \bf{Estável}	\\
+				\hline\hline
+				Bubble Sort		& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
+				Insertion Sort	& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
+				Merge Sort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(n)\)		& sim			\\
+				Heapsort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(1)\)		& não			\\
+				Quicksort		& \(O(n \log n)\)	& \(O(n^2)\)		& \(O(\log n)\) & não			\\
+				\hline
+				Counting Sort	& \(O(n + 2^k)\)	& \(O(n + 2^k)\)	& \(O(n + 2^k)\) & sim			\\
+				Bucket Sort		& \(O(n \cdot k)\)	& \(O(n^2\cdot k)\)	& \(O(n \cdot k)\) & sim		\\
+				\hline\hline
+			\end{tabular}
+			\caption{Características dos algoritmos de ordenação}
+		\end{table}
 		\subsection{Bubble Sort}
 			\lstinputlisting{algoritmos/bubblesort.cpp}
 		\subsection{Merge Sort}
@@ -88,7 +103,7 @@
 				\lstinputlisting{algoritmos/floyd-warshall.cpp}
 			\subsubsection{Dijkstra}
 				Tempo: \( O(|V|^2) \)
-				% TODO
+				\lstinputlisting{algoritmos/dijkstra.cpp}
 			\subsubsection{Dijkstra com Heap}
 				Tempo: \( O(|E| + |V| \log |V|) \)
 				% TODO
