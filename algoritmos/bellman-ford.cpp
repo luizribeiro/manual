@@ -1,8 +1,7 @@
-int eu[MM], ev[MM]; /* lista de arestas (u,v) (eu[i], ev[i]) */
-int d[NN][NN]; /* matriz de adjacencia */
+struct { int u, v, w; } e[MM]; /* arestas (u,v) com peso w */
 
 int bellmanford(int s, int t) {
-	int di[N], p[N];
+	int di[NN], p[NN]; /* distancias e predecessores */
 	int i, j;
 
 	for(i = 0; i < n; i++)
@@ -13,9 +12,9 @@ int bellmanford(int s, int t) {
 	for(j = 0; j < n; j++) {
 		bool trocou = false;
 		for(i = 0; i < m; i++) {
-			int u = eu[i], v = ev[i];
-			if(di[v] > di[u] + d[u][v]) {
-				di[v] = di[u] + d[u][v];
+			int u = e[i].u, v = e[i].v;
+			if(di[v] > di[u] + e.w) {
+				di[v] = di[u] + e.w;
 				p[v] = u;
 				trocou = true;
 			}
