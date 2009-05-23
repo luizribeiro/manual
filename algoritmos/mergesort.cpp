@@ -8,8 +8,10 @@ void merge(int a[], int aux[], int esq, int meio, int dir) {
 	while(esq <= esq_fim && meio <= dir)
 		if(a[esq] <= a[meio])
 			aux[aux_pos++] = a[esq++];
-		else
+		else {
 			aux[aux_pos++] = a[meio++];
+			c += esq_fim - esq + 1; /* conta swaps */
+		}
 
 	while(esq <= esq_fim)
 		aux[aux_pos++] = a[esq++];
