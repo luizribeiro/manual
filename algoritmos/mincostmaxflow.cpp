@@ -1,8 +1,8 @@
 int n;
-int f[N][N], cap[N][N], cost[N][N]; /* fluxo, capacidade, custo */
+int f[NN][NN], cap[NN][NN], cost[NN][NN]; /* fluxo, capacidade, custo */
 list< pair<int, int> > edges; /* lista de adjacencias */
 
-int p[N], d[N]; /* previous, dists do bellman-ford */
+int p[NN], d[NN]; /* previous, dists do bellman-ford */
 
 int bellmanford(int s, int t) {
 	int i;

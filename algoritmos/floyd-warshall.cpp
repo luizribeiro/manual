@@ -13,14 +13,16 @@ void floyd_warshall() {
 
 	for(k = 0; k < n; k++) {
 		for(i = 0; i < n; i++) {
-			for(j = 0; j < n; j++) {
-				if(d[i][k] + d[k][j] < d[i][j]) { 
-					d[i][j] = d[i][k] + d[k][j]; 
-					p[i][j] = p[k][j]; 
-				} 
-			}
-		}
-	}
+			if(i != k && d[i][k] < INF) { // opcional, deixa + rapido
+				for(j = 0; j < n; j++) {
+					if(d[i][k] + d[k][j] < d[i][j]) { 
+						d[i][j] = d[i][k] + d[k][j]; 
+						p[i][j] = p[k][j]; 
+					}
+				} // for j
+			} // opcional
+		} // for i
+	} // for k
 }
 
 /* reconstruir caminho entre i e j */
