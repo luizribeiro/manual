@@ -2,7 +2,7 @@ int n;
 int w[NN][NN];
 
 int dijkstra(int s, int t) {
-	int in[MM], d[MM];
+	int in[NN], d[NN];
 	int i, u;
 
 	for(i = 0; i < n; i++)
