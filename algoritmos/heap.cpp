@@ -8,7 +8,7 @@ double h[MAX_ELEM];		/* heap (de maximo) */
 int hn;					/* numero de elementos */
 
 void sobe(int i) {
-	if(i > 0 && h[pai(i)] < h[i]) {
+	if(i > 0 && h[i] > h[pai(i)]) {
 		double t = h[pai(i)];
 		h[pai(i)] = h[i];
 		h[i] = t;
