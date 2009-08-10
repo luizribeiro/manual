@@ -101,6 +101,15 @@
 			\lstinputlisting{algoritmos/comb.cpp}
 		\subsection{Floyd's Cycle-Finding}
 			\lstinputlisting{algoritmos/floydcycle.cpp}
+		\subsection{Matrizes}
+			\subsubsection{Decomposição LU}
+				\textbf{Testado apenas no problema do Teorema de Kirchhoff.}
+				Tempo: \( \Theta(n^3) \)
+				\lstinputlisting{algoritmos/lu-decomposition.cpp}
+			\subsubsection{Determinante}
+				\textbf{Testado apenas no problema do Teorema de Kirchhoff.}
+				Tempo: \( \Theta(n^3) \)
+				\lstinputlisting{algoritmos/determinante.cpp}
 
 	\section{Grafos}
 		\subsection{Strongly Connected Components}
@@ -156,6 +165,8 @@
 		\subsection{Fatos Interessantes}
 			\begin{enumerate}
 				\item Um grafo é bipartido se e somente se não tem ciclo ímpar.
+				\item \textbf{Teorema de Euler}. Para qualquer grafo planar, \( V - E + F = 1 + C \), onde \(V\) é o número de vértices do grafo, \(E\) é o número de arestas, \(F\) é o número de faces do grafo em um desenho planar e \(C\) é o número de componentes conexas.
+				\item \textbf{Teorema de Kirchhoff}. Seja a matriz \( T = [ t_{ij} ] \), onte \( t_{ij} \) é o número de arestas entre \(i\) e \(j\), para \( i \neq j \), e \( t_{ii} = - deg_i \). O número de árvores geradoras de um grafo é igual ao determinante de uma matriz obtida ao deletar qualquer \emph{k}-ésima linha e \emph{k}-ésima coluna de \(T\).
 			\end{enumerate}
 
 	\section{Programação Dinâmica}
@@ -226,6 +237,9 @@
 		\subsection{Kadane 2D}
 			Tempo: \(O(n^3)\)
 			\lstinputlisting{algoritmos/kadane2d.cpp}
+		\subsection{Majority Problem}
+			Encontra o elemento que aparece em mais da metade de um array em \(\Theta(n)\)
+			\lstinputlisting{algoritmos/majority.cpp}
 		\subsection{Stable Marriage}
 			Given $n$ men and $n$ women, where each person has ranked all members of the opposite sex with a unique number between $1$ and $n$ in order of preference, marry the men and women off such that there are no two people of opposite sex who would both rather have each other than their current partners. If there are no such people, all the marriages are \emph{stable}.
 			\subsubsection{Gale-Shapley}
