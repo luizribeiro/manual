@@ -2,7 +2,7 @@
 void linearsolve(double a[NN][NN], double b[NN], double x[NN], int n) {
 	double lu[NN][NN], y[NN], sum;
 	int i, j, p[NN];
-	lupdecomp(a, lu, p, n); /* cuidado, supoe que eh singular */
+	lupdecomp(a, lu, p, n); /* cuidado, supoe que eh invertivel */
 	sum = 0.0;
 	for(i = 0; i < n; i++) {
 		y[i] = b[p[i]];
