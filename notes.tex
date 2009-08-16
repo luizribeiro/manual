@@ -232,6 +232,14 @@
 				\item $(0, a)$, $(0, \neg a)$, $(a, 1)$ e $(\neg a, 1)$ para \emph{todos} os literais $a$ da fórmula.
 				\item Obviamente, $(1, x)$ e $(\neg x, 0)$.
 			\end{enumerate}
+		\subsection{Sist. de restrições de diferenças}
+			Dado um sistema de $n$ incógnitas $x_i$ ($1 \leq i \leq n$) com $m$ inequações na forma $ x_j - x_i \leq b_k $, modela-se um grafo com $V = \{v_0, v_1, \ldots, v_n\} $, uma aresta $(v_i, v_j)$ para cada inequação $x_j - x_i \leq b_k$, com $w(v_i, v_j) = v_k$ e uma aresta $(v_0, v_i)$, com $w(v_0, v_i) = 0$ para cada $v_i \in V - \{v_0\}$.
+			
+			Por fim, rodar Bellman-Ford no grafo construído, caso existam ciclos negativos, não há solução para o sistema. Caso não existam ciclos negativos, uma solução factível para o sistema é $(x_1 = \delta(v_0, v_1), x_2 = \delta(v_0, v_1), \ldots, x_n = \delta(v_0, v_n))$.
+
+			O algoritmo minimiza $\sum_{i=1}^n x_i$ e $\max\{x_i\} - \min\{x_i\}$, sujeito às restrições e $x_i \leq 0$.
+
+			Mais informações no Cormen, p. 602.
 		\subsection{Kadane 1D}
 			Tempo: \(\Theta(n)\)
 			\lstinputlisting{algoritmos/kadane1d.cpp}
@@ -275,6 +283,7 @@
 				\item Verificar limites de arrays.
 				\item Modificando container STL enquanto iterando sobre ele?
 				\item \emph{Nunca} fazer $strcmp == -1$, sempre $strcmp < 0$!
+				\item Tem alguma função que era pra retornar algo que não tá retornando nada? Cuidado, C++ não reclama da falta de $return$!
 			\end{enumerate}
 			\subsubsection{Wrong Answer}
 				\begin{enumerate}
@@ -305,7 +314,7 @@
 			\begin{enumerate}
 				\item O grafo é dirigido?
 				\item O grafo pode ser desconexo?
-				\item O grafo possui arestas paralelas?
+				\item O grafo possui arestas paralelas? Arestas repetidas? Arestas $(v_i,v_i)$?
 				\item As arestas podem ter pesos negativos?
 				\item Dá pra otimizar o Dijkstra? Usar heap no braço? Alguma heurística pra transformar em A*?
 			\end{enumerate}
