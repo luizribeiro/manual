@@ -1,12 +1,10 @@
-SRCS = $(wildcard *.cpp)
-TARGETS = $(patsubst %.cpp,%,$(SRCS))
-CXX = g++
-CXXFLAGS = -Wall -lm -lcrypt -O2 -pipe
+SRC = $(wildcard *.cpp)
+TRG = $(patsubst %.cpp,%,$(SRC))
 
 %: $<.cpp
-		$(CXX) $(CXXFLAGS) $< -o $@
+		g++ -Wall -lm $< -o $@
 
-all: $(TARGETS)
+all: $(TRG)
 
 clean:
-		rm $(TARGETS)
+		rm $(TRG)

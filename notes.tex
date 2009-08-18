@@ -47,38 +47,15 @@
 		\subsection{Union-Find}
 			Tempo: \( O(\alpha(n)) \) em todas as operações.
 			\lstinputlisting{algoritmos/union-find.cpp}
-		\subsection{Lowest Common Ancestor}
-			% TODO
 		\subsection{Fenwick Tree}
 			% TODO
 
 	\section{Ordenação}
-		\begin{table}[h]
-			\centering
-			\begin{tabular}{l l l l l}
-				\hline\hline
-				\bf{Algoritmo}	& \bf{Caso Médio}	& \bf{Pior Caso}	& \bf{Memória}	& \bf{Estável}	\\
-				\hline\hline
-				Bubble Sort		& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
-				Insertion Sort	& \(O(n^2)\)		& \(O(n^2)\)		& \(O(1)\)		& sim			\\
-				Merge Sort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(n)\)		& sim			\\
-				Heapsort		& \(O(n \log n)\)	& \(O(n \log n)\)	& \(O(1)\)		& não			\\
-				Quicksort		& \(O(n \log n)\)	& \(O(n^2)\)		& \(O(\log n)\) & não			\\
-				\hline
-				Counting Sort	& \(O(n + 2^k)\)	& \(O(n + 2^k)\)	& \(O(n + 2^k)\) & sim			\\
-				Bucket Sort		& \(O(n \cdot k)\)	& \(O(n^2\cdot k)\)	& \(O(n \cdot k)\) & sim		\\
-				\hline\hline
-			\end{tabular}
-			\caption{Características dos algoritmos de ordenação}
-		\end{table}
-		\subsection{Bubble Sort}
-			\lstinputlisting{algoritmos/bubblesort.cpp}
 		\subsection{Merge Sort}
+			% TODO: decidir entre mergesort.cpp ou mergesort2.cpp
 			\lstinputlisting{algoritmos/mergesort.cpp}
 		\subsection{Quicksort}
 			\lstinputlisting{algoritmos/quicksort.cpp}
-		\subsection{Counting Sort}
-			\lstinputlisting{algoritmos/countingsort.cpp}
 	
 	\section{Matemática}
 		\subsection{Bigmod}
@@ -90,10 +67,8 @@
 			\lstinputlisting{algoritmos/bignum.cpp}
 		\subsection{Sieve de Números Primos}
 			\lstinputlisting{algoritmos/sieve.cpp}
-		\subsection{Máximo Divisor Comum}
-			\lstinputlisting{algoritmos/gcd.cpp}
-		\subsection{Mínimo Múltiplo Comum}
-			\lstinputlisting{algoritmos/mmc.cpp}
+		\subsection{GCD e LCM}
+			\lstinputlisting{algoritmos/gcdlcm.cpp}
 		\subsection{Algoritmo de Euclides}
 			\lstinputlisting{algoritmos/euclides.cpp}
 		\subsection{Combinação}
@@ -138,8 +113,6 @@
 			\subsubsection{Kruskal}
 				Tempo: \( O(|E| \log |V|) \) ou \( O(|E| \cdot \alpha(|V|)) \) caso as arestas estejam pré-ordenadas.
 				\lstinputlisting{algoritmos/kruskal.cpp}
-			\subsubsection{Boruvka}
-				% TODO
 		\subsection{Fluxo Máximo e Corte Mínimo}
 			\subsubsection{Edmonds-Karp}
 				Tempo: \( O(n!) \) % TODO: arrumar o tempo
@@ -159,6 +132,8 @@
 			\lstinputlisting{algoritmos/bridge.cpp}
 		\subsection{Ponto de Articulação}
 			\lstinputlisting{algoritmos/pontoart.cpp}
+		\subsection{Lowest Common Ancestor}
+			% TODO
 		\subsection{Caminho Euleriano}
 			% TODO
 		\subsection{Ciclo Euleriano}
@@ -182,6 +157,7 @@
 			Tempo: \( O(n^3) \)
 			\lstinputlisting{algoritmos/arraymultiplication.cpp}
 		\subsection{0-1 Knapsack}
+			% TODO
 		\subsection{CYK}
 			Tempo: \( O(n^3) \)
 			% TODO	
@@ -192,13 +168,14 @@
 		\subsection{Intersecção de Segmentos}
 			\lstinputlisting{algoritmos/segments-intersect.cpp}
 		\subsection{Ponto dentro de Polígono}
-			\subsubsection{Solução 1}
-				Constante de tempo baixa, não faz uso de funções de trigonometria. Retorna \emph{true} se o ponto está sob um dos lados do polígono (facilmente alterável).
-				\lstinputlisting{algoritmos/inpoly1.cpp}
+			% TODO: funciona para quais poligonos? simples? concavos? só pra convexos? os pontos do poligono devem ser dados em alguma ordem?
+			Constante de tempo baixa, não faz uso de funções de trigonometria. Retorna \emph{true} se o ponto está sob um dos lados do polígono (facilmente alterável).
+			\lstinputlisting{algoritmos/inpoly1.cpp}
 		\subsection{Teste de Convexidade}
 			Algoritmo para testar se um polígono é convexo ou não.
-			% TODO
+			% TODO: só pegar do UVa 10078 e dizer pra qual tipo de polígono funcionam, etc
 		\subsection{Área de um Polígono}
+			% TODO: conferir, essas duas funções são, provavelmente, a mesma merda
 			\subsubsection{Convexo}
 				Se o polígono está no sentido anti-horário, a área é positiva. Se estiver no sentido horário, a área é negativa.
 				\lstinputlisting{algoritmos/convex-area.cpp}
@@ -262,9 +239,12 @@
 			\lstinputlisting{algoritmos/calendario.cpp}
 		\subsection{Josephus Problem}
 			% TODO
+	\section{Containers STL}
+		% TODO: colocar tabela fera igual a do cplusplus.com
 
 	\twocolumn
 	\section{Formulário}
+		% TODO: roubar fórmulas daquele manual russo (outras coisas alem de formulas tb, se essa section ainda for existir)
 		\subsection{Somatórios}
 			\[ \sum_{k = 1}^{n} k = \frac{n \cdot (n + 1)}{2} \]
 			\[ \sum_{k = 1}^{n} k^2 = \frac{n \cdot (n + 1) \cdot (2n + 1)}{6} \]
@@ -282,10 +262,11 @@
 	\section{Troubleshooting}
 		\subsection{Erros Comuns}
 			\begin{enumerate}
-				\item Overflow?
-				\item Verificar iteradores de todos os fors.
-				\item Verificar limites de arrays.
-				\item Modificando container STL enquanto iterando sobre ele?
+				\item \textbf{Overflow}?
+				\item \textbf{Inicializar} todas as variáveis.
+				\item Verificar \textbf{iteradores} de todos os fors.
+				\item Verificar \textbf{limites de arrays}.
+				\item Modificando container STL enquanto iterando sobre ele? Cuidado!
 				\item \emph{Nunca} fazer $strcmp == -1$, sempre $strcmp < 0$!
 				\item Tem alguma função que era pra retornar algo que não tá retornando nada? Cuidado, C++ não reclama da falta de $return$!
 			\end{enumerate}

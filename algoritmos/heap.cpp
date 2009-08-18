@@ -1,45 +1,33 @@
-#define MAX_ELEM 1024
+#define pai(i) (((i)-1)>>1)
+#define esq(i) (((i)<<1)+1)
+#define dir(i) (((i)<<1)+2)
 
-#define pai(i) (((i)-1)/2)
-#define esq(i) (2*(i)+1)
-#define dir(i) (2*(i)+2)
+template <class T> struct heap {
+	T h[MAXHEAP];			/* heap (de maximo) */
+	int n;					/* numero de elementos */
 
-double h[MAX_ELEM];		/* heap (de maximo) */
-int hn;					/* numero de elementos */
+	void clear() { n = 0; }
 
-void sobe(int i) {
-	if(i > 0 && h[i] > h[pai(i)]) {
-		double t = h[pai(i)];
-		h[pai(i)] = h[i];
-		h[i] = t;
-		sobe(pai(i));
+	void sobe(int i) {
+		if(i > 0 && h[i] > h[pai(i)])
+			swap(h[pai(i)], h[i]), sobe(pai(i));
 	}
-}
 
-void desce(int i) {
-	int filho;
-
-	if(dir(i) < hn && h[dir(i)] > h[esq(i)])
-		filho = dir(i);
-	else
-		filho = esq(i);
-
-	if(filho < hn && h[filho] > h[i]) {
-		double t = h[filho];
-		h[filho] = h[i];
-		h[i] = t;
-		desce(filho);
+	void desce(int i) {
+		int fih = dir(i) < n && h[dir(i)] > h[esq(i)] ? dir(i) : esq(i);
+		if(fih < n && h[fih] > h[i])
+			swap(h[fih], h[i]), desce(fih);
 	}
-}
 
-double pop() {
-	double r = h[0];
-	h[0] = h[--hn];
-	desce(0);
-	return r;
-}
+	T pop() {
+		T r = h[0];
+		h[0] = h[--n];
+		desce(0);
+		return r;
+	}
 
-void push(double v) {
-	h[hn] = v;
-	sobe(hn++);
-}
+	void push(T v) {
+		h[n] = v;
+		sobe(n++);
+	}
+};
