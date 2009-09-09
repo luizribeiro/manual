@@ -1,10 +1,6 @@
-#define MAX_NODES 100
-
-int c[MAX_NODES][MAX_NODES];	/* capacidade */
-int f[MAX_NODES][MAX_NODES];	/* fluxo */
-int v[MAX_NODES];				/* visitados */
-int p[MAX_NODES];				/* predecessores no caminho */
-int n;							/* numero de vertices */
+int n;						/* numero de vertices */
+int c[NN][NN], f[NN][NN];	/* capacidade, fluxo */
+int v[NN], p[NN]			/* visitado, predecessor */
 
 bool bfs(int s, int t) {
 	queue<int> q;
