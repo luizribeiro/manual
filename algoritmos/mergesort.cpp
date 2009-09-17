@@ -1,37 +1,16 @@
-void merge(int a[], int aux[], int esq, int meio, int dir) {
-	int i, esq_fim, n, aux_pos;
+void mergesort(int a[], int n) {
+	int i, j, k, s[NN], f = n/2;
+	if(n <= 1) return;
 
-	esq_fim = meio - 1;
-	aux_pos = esq;
-	n = dir - esq + 1;
+	/* ordena metades */
+	mergesort(a, f);
+	mergesort(a+f, n-f);
 
-	while(esq <= esq_fim && meio <= dir)
-		if(a[esq] <= a[meio])
-			aux[aux_pos++] = a[esq++];
-		else {
-			aux[aux_pos++] = a[meio++];
-			c += esq_fim - esq + 1; /* conta swaps */
-		}
-
-	while(esq <= esq_fim)
-		aux[aux_pos++] = a[esq++];
-
-	while(meio <= dir)
-		aux[aux_pos++] = a[meio++];
-
-	for(i = 0; i < n; i++) {
-		a[dir] = aux[dir];
-		dir--;
-	}
-}
-
-void mergesort(int a[], int aux[], int esq, int dir) {
-	int meio;
-
-	if(dir > esq) {
-		meio = (dir + esq) / 2;
-		mergesort(a, aux, esq, meio);
-		mergesort(a, aux, meio + 1, dir);
-		merge(a, aux, esq, meio + 1, dir);
-	}
+	/* merge */
+	for(i = 0, j = f, k = 0; i < f && j < n; k++)
+		if(a[i] <= a[j]) s[k] = a[i++];
+		else s[k] = a[j++], c += f-i;
+	while(i < f) s[k++] = a[i++];
+	while(j < n) s[k++] = a[j++];
+	for(i = 0; i < n; i++) a[i] = s[i];
 }

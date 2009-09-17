@@ -53,7 +53,6 @@
 
 	\section{Ordenação}
 		\subsection{Merge Sort}
-			% TODO: decidir entre mergesort.cpp ou mergesort2.cpp
 			\lstinputlisting{algoritmos/mergesort.cpp}
 		\subsection{Quicksort}
 			\lstinputlisting{algoritmos/quicksort.cpp}
@@ -103,20 +102,17 @@
 				Tempo: \( O(|V|^2) \)
 				\lstinputlisting{algoritmos/dijkstra.cpp}
 			\subsubsection{Dijkstra com Heap}
-				Tempo: \( O(|E| + |V| \log |V|) \)
-				% TODO
+				Tempo: \( O((|E| + |V|) \log |V|) \)
+				\lstinputlisting{algoritmos/dijkstra-heap.cpp}
 			\subsubsection{Bellman-Ford}
 				Tempo: \( O(|V| |E|) \)
 				\lstinputlisting{algoritmos/bellman-ford.cpp}
-		\subsection{Árvore Geradora Mínima}
-			\subsubsection{Prim}
-				% TODO
-			\subsubsection{Kruskal}
-				Tempo: \( O(|E| \log |V|) \) ou \( O(|E| \cdot \alpha(|V|)) \) caso as arestas estejam pré-ordenadas.
-				\lstinputlisting{algoritmos/kruskal.cpp}
+		\subsection{Kruskal}
+			Tempo: \( O(|E| \log |V|) \) ou \( O(|E| \cdot \alpha(|V|)) \) caso as arestas estejam pré-ordenadas.
+			\lstinputlisting{algoritmos/kruskal.cpp}
 		\subsection{Fluxo Máximo e Corte Mínimo}
 			\subsubsection{Edmonds-Karp}
-				Tempo: \( O(n!) \) % TODO: arrumar o tempo
+				Tempo: \( O(|V| |E|^2) \)
 				\lstinputlisting{algoritmos/ford-fulkerson.cpp}
 			\subsubsection{Stoer-Wagner}
 				Algoritmo para encontrar o corte mínimo (não s-t) em um grafo. A implementação abaixo é \(O(n^3)\).
@@ -129,21 +125,32 @@
 
 				Tempo: \( O(n^3) \)
 				\lstinputlisting{algoritmos/kuhn-munkres.cpp}
+		\subsection{Hopcroft-Karp}
+			Tempo: \( O(|E| \sqrt{|V|})\)
+			\lstinputlisting{algoritmos/hopcroft-karp.cpp}
 		\subsection{Aresta de Corte}
+			Para grafos não-dirigidos.
 			\lstinputlisting{algoritmos/bridge.cpp}
 		\subsection{Ponto de Articulação}
+			Para grafos não-dirigidos.
 			\lstinputlisting{algoritmos/pontoart.cpp}
 		\subsection{Lowest Common Ancestor}
-			% TODO
-		\subsection{Caminho Euleriano}
-			% TODO
+			Tempo: \( O(V + Q + \alpha(V + Q)) \)
+			\lstinputlisting{algoritmos/lca.cpp}
 		\subsection{Ciclo Euleriano}
-			% TODO
+			\lstinputlisting{algoritmos/ciclo-euleriano.cpp}
 		\subsection{Fatos Interessantes}
 			\begin{enumerate}
 				\item Um grafo é bipartido se e somente se não tem ciclo ímpar.
 				\item \textbf{Teorema de Euler}. Para qualquer grafo planar, \( V - E + F = 1 + C \), onde \(V\) é o número de vértices do grafo, \(E\) é o número de arestas, \(F\) é o número de faces do grafo em um desenho planar e \(C\) é o número de componentes conexas.
 				\item \textbf{Teorema de Kirchhoff}. Seja a matriz \( T = [ t_{ij} ] \), onte \( t_{ij} \) é o número de arestas entre \(i\) e \(j\), para \( i \neq j \), e \( t_{ii} = - deg_i \). O número de árvores geradoras de um grafo é igual ao determinante de uma matriz obtida ao deletar qualquer \emph{k}-ésima linha e \emph{k}-ésima coluna de \(T\).
+				\item \textbf{Ciclo Euleriano}. Um grafo não-dirigido possui ciclo euleriano se todos os vértices têm grau par e o \emph{grafo é conexo}. Um grafo dirigido admite caso $in[v] = out[v] ~ \forall ~ v \in V$.
+				\item \textbf{Caminho Euleriano}. Um grafo não-dirigido possui caminho euleriano se apenas dois vértices tem grau ímpar e o \emph{grafo é conexo}.
+				\begin{enumerate}
+					\item \textbf{Algoritmo de Fleury}. Usado para gerar um caminho euleriano. Escolha um dos dois nós pares como nó inicial e visite-o, escolha sempre uma aresta que não seja uma ponte no grafo reduzido (a não ser que não exista outra alternativa), atravesse a aresta escolhida e visite o nó seguinte.
+				\end{enumerate}
+				\item \textbf{Teorema de Erdös-Gallai}. Dada uma seqüência de $n$ inteiros $\{d_1, d_2, \ldots, d_n\}$, com $n-1 \geq d_1 \geq d_2 \geq \ldots \geq d_n \geq 0$. Os números da seqüência podem representar os graus dos vértices de um grafo simples não-dirigido \emph{sse} $\sum d_i$ for par e $d_1 + \ldots + d_k \leq k (k - 1) + \sum_{i=k+1}^n \min(k, d_i)$ para todo $k = 1, 2, \ldots, n - 1$.
+				\item \textbf{Teorema de Menger}. % TODO
 			\end{enumerate}
 
 	\section{Programação Dinâmica}
