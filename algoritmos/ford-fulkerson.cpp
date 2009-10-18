@@ -1,6 +1,6 @@
 int n;						/* numero de vertices */
 int c[NN][NN], f[NN][NN];	/* capacidade, fluxo */
-int v[NN], p[NN]			/* visitado, predecessor */
+int v[NN], p[NN];			/* visitado, predecessor */
 
 bool bfs(int s, int t) {
 	queue<int> q;

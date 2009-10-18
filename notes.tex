@@ -59,8 +59,6 @@
 	
 	\section{Matemática}
 		\subsection{Bigmod}
-			Propriedade:
-			\[ (A \cdot B \cdot C) \bmod N = ((A \bmod N) \cdot (B \bmod N) \cdot (C \bmod N)) \bmod N \]
 			\[ r = b^p \bmod m \]
 			\lstinputlisting{algoritmos/bigmod.cpp}
 		\subsection{Long Integer}
@@ -86,6 +84,12 @@
 			\subsubsection{Sistemas Lineares}
 				Resolve um sistema de equações lineares da forma \(Ax = B\)
 				\lstinputlisting{algoritmos/sistlinear.cpp}
+		\subsection{Números Complexos}
+			\lstinputlisting{algoritmos/complex.cpp}
+		\subsection{Durand-Kerner}
+			Encontra as raízes de um polinômio:
+			\[ a_0 x^n + a_1 x^{n-1} + \cdot + a_{n-1} x + a_n = 0 \]
+			\lstinputlisting{algoritmos/durand-kerner.cpp}
 
 	\section{Grafos}
 		\subsection{Strongly Connected Components}
@@ -108,7 +112,7 @@
 				Tempo: \( O(|V| |E|) \)
 				\lstinputlisting{algoritmos/bellman-ford.cpp}
 		\subsection{Kruskal}
-			Tempo: \( O(|E| \log |V|) \) ou \( O(|E| \cdot \alpha(|V|)) \) caso as arestas estejam pré-ordenadas.
+			Tempo: \( O(|E| \log |V|) \) ou \( O(|E| \ldots \alpha(|V|)) \) caso as arestas estejam pré-ordenadas.
 			\lstinputlisting{algoritmos/kruskal.cpp}
 		\subsection{Fluxo Máximo e Corte Mínimo}
 			\subsubsection{Edmonds-Karp}
@@ -150,27 +154,24 @@
 					\item \textbf{Algoritmo de Fleury}. Usado para gerar um caminho euleriano. Escolha um dos dois nós pares como nó inicial e visite-o, escolha sempre uma aresta que não seja uma ponte no grafo reduzido (a não ser que não exista outra alternativa), atravesse a aresta escolhida e visite o nó seguinte.
 				\end{enumerate}
 				\item \textbf{Teorema de Erdös-Gallai}. Dada uma seqüência de $n$ inteiros $\{d_1, d_2, \ldots, d_n\}$, com $n-1 \geq d_1 \geq d_2 \geq \ldots \geq d_n \geq 0$. Os números da seqüência podem representar os graus dos vértices de um grafo simples não-dirigido \emph{sse} $\sum d_i$ for par e $d_1 + \ldots + d_k \leq k (k - 1) + \sum_{i=k+1}^n \min(k, d_i)$ para todo $k = 1, 2, \ldots, n - 1$.
-				\item \textbf{Teorema de Menger}. % TODO
+				\item \textbf{Teorema de Menger}. Dado um grafo não-dirigido e dois vértices distintos $x$ e $y$, o número de arestas cuja remoção desconecta $x$ e $y$ é igual ao número de caminhos aresta-independentes de $x$ para $y$. O mesmo teorema é válido para vértices.
 			\end{enumerate}
 
 	\section{Programação Dinâmica}
-		% TODO: colocar mais
 		\subsection{Longest Common Subsequence}
 			Tempo: \( O(nm) \)
 			\lstinputlisting{algoritmos/lcs.cpp}
 		\subsection{Longest Increasing Subsequence}
 			Tempo: \( O(n \log n) \)
 			\lstinputlisting{algoritmos/lis.cpp}
-		\subsection{Smallest Common Supersequence}
-			% TODO
+		%\subsection{Smallest Common Supersequence}
+		%	% TO DO
 		\subsection{Matrix-chain Multiplication}
 			Tempo: \( O(n^3) \)
 			\lstinputlisting{algoritmos/arraymultiplication.cpp}
-		\subsection{0-1 Knapsack}
-			% TODO
-		\subsection{CYK}
-			Tempo: \( O(n^3) \)
-			% TODO	
+		%\subsection{CYK}
+		%	Tempo: \( O(n^3) \)
+		%	% TO DO	
 	\section{Geometria Computacional}
 		\lstinputlisting{algoritmos/geometry-defs.cpp}
 		\subsection{Círculos}
@@ -178,12 +179,12 @@
 		\subsection{Intersecção de Segmentos}
 			\lstinputlisting{algoritmos/segments-intersect.cpp}
 		\subsection{Ponto dentro de Polígono}
-			% TODO: funciona para quais poligonos? simples? concavos? só pra convexos? os pontos do poligono devem ser dados em alguma ordem?
-			Constante de tempo baixa, não faz uso de funções de trigonometria. Retorna \emph{true} se o ponto está sob um dos lados do polígono (facilmente alterável).
-			\lstinputlisting{algoritmos/inpoly1.cpp}
-		\subsection{Teste de Convexidade}
-			Algoritmo para testar se um polígono é convexo ou não.
-			% TODO: só pegar do UVa 10078 e dizer pra qual tipo de polígono funcionam, etc
+			% TODO: os pontos do poligono devem ser dados em alguma ordem?
+			Constante de tempo baixa, não faz uso de funções de trigonometria. Funciona para qualquer polígono simples. Retorna \emph{true} se o ponto está sob um dos lados do polígono (facilmente alterável).
+			\lstinputlisting{algoritmos/inpoly.cpp}
+		%\subsection{Teste de Convexidade}
+		%	Algoritmo para testar se um polígono é convexo ou não.
+		%	% TODO: só pegar do UVa 10078 e dizer pra qual tipo de polígono funcionam, etc
 		\subsection{Área de um Polígono}
 			% TODO: conferir, essas duas funções são, provavelmente, a mesma merda
 			\subsubsection{Convexo}
@@ -249,8 +250,8 @@
 			\lstinputlisting{algoritmos/calendario.cpp}
 		\subsection{Josephus Problem}
 			\lstinputlisting{algoritmos/josephus.cpp}
-	\section{Containers STL}
-		% TODO: colocar tabela fera igual a do cplusplus.com
+	%\section{Containers STL}
+	%	% TODO: colocar tabela fera igual a do cplusplus.com
 
 	\twocolumn
 	\section{Formulário}
@@ -310,6 +311,6 @@
 				\item O grafo possui arestas paralelas? Arestas repetidas? Arestas $(v_i,v_i)$?
 				\item As arestas podem ter pesos negativos?
 				\item Dá pra otimizar o Dijkstra? Usar heap no braço? Alguma heurística pra transformar em A*?
-				\item Zerou $deg[]$, $vis[]$, etc?
+				\item Zerou $deg[]$, $vis[]$, vectors, etc?
 			\end{enumerate}
 \end{document}
