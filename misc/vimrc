@@ -1,5 +1,6 @@
 set nocp bs=2 ts=4 sw=4 noet ru ai si cin hls is ic scs sc nu
 set ww=<,>,b,s,[,] mouse=a bg=dark fen fdm=marker
-mat keyword /\(foreach\|FOR\)/
+nm <F2> :w<CR>:mak<CR>
+nm <F3> :!./%< < %<.in<CR>
 hi Normal guibg=black guifg=white
 syn on
