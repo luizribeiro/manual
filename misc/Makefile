@@ -1,10 +1,10 @@
-SRC = $(wildcard *.cpp)
-TRG = $(patsubst %.cpp,%,$(SRC))
+S = $(wildcard *.cpp)
+T = $(S:.cpp=)
 
 %: $<.cpp
 		g++ -Wall -lm $< -o $@
 
-all: $(TRG)
+all: $(T)
 
 clean:
-		rm $(TRG)
+		rm $(T)
