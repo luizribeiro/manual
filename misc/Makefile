@@ -1,10 +1,8 @@
 S = $(wildcard *.cpp)
 T = $(S:.cpp=)
-
-%: $<.cpp
-		g++ -Wall -lm $< -o $@
+CXX = g++
+CXXFLAGS = -Wall -lm -g
 
 all: $(T)
-
 clean:
-		rm $(T)
+	rm $(T)
