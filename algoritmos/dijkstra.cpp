@@ -7,7 +7,7 @@ int dijkstra(int s, int t) {
 
 	for(i = 0; i < n; i++)
 		d[i] = w[s][i], in[i] = 0;
-	d[s] = 0;
+	d[s] = 0, in[s] = 1;
 
 	while(!in[t]) {
 		int best = INF;

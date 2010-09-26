@@ -13,7 +13,7 @@ double kruskal() {
 	total = 0.0;
 	while(c > 1) {
 		double w = -q.top().first;
-		int a = q.top().second.second;
+		int a = q.top().second.first;
 		int b = q.top().second.second;
 		q.pop();
 		if(findset(a) != findset(b)) {
