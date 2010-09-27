@@ -2,7 +2,7 @@ SRCS = $(wildcard *.tex) $(wildcard algoritmos/*.cpp) $(wildcard misc/*)
 
 all: pdf
 
-pdf: notes.tex algoritmos/pontoart.cpp
+pdf: notes.tex
 	pdflatex notes.tex
 	pdflatex notes.tex
 	pdflatex notes.tex

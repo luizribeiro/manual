@@ -38,116 +38,116 @@
 		\subsection{Makefile}
 			\lstinputlisting{misc/Makefile}
 		\subsection{Template}
-			\lstinputlisting{algoritmos/template.cpp}
+			\lstinputlisting{misc/template.cpp}
 	
 	\section{Estruturas de Dados}
 		\subsection{Heap Binário}
 			Tempo: \( O(\log n) \) em todas as operações.
-			\lstinputlisting{algoritmos/heap.cpp}
+			\lstinputlisting{algoritmos/structs/heap.cpp}
 		\subsection{Union-Find}
 			Tempo: \( O(\alpha(n)) \) em todas as operações.
-			\lstinputlisting{algoritmos/union-find.cpp}
+			\lstinputlisting{algoritmos/structs/union-find.cpp}
 		\subsection{Fenwick Tree}
 			Tempo: \( O(\log n) \) em todas as operações
-			\lstinputlisting{algoritmos/fenwick.cpp}
+			\lstinputlisting{algoritmos/structs/fenwick.cpp}
 		\subsection{Suffix Array}
 			Tempo: \( O(n \log n) \)
-			\lstinputlisting{algoritmos/suffixarray.cpp}
+			\lstinputlisting{algoritmos/structs/suffixarray.cpp}
 
 	\section{Ordenação}
 		\subsection{Merge Sort}
-			\lstinputlisting{algoritmos/mergesort.cpp}
+			\lstinputlisting{algoritmos/sorting/mergesort.cpp}
 		\subsection{Quicksort}
-			\lstinputlisting{algoritmos/quicksort.cpp}
+			\lstinputlisting{algoritmos/sorting/quicksort.cpp}
 	
 	\section{Matemática}
 		\subsection{Bigmod}
 			\[ r = b^p \bmod m \]
-			\lstinputlisting{algoritmos/bigmod.cpp}
+			\lstinputlisting{algoritmos/math/bigmod.cpp}
 		\subsection{Long Integer}
-			\lstinputlisting{algoritmos/bignum.cpp}
+			\lstinputlisting{algoritmos/math/bignum.cpp}
 		\subsection{Sieve de Números Primos}
-			\lstinputlisting{algoritmos/sieve.cpp}
+			\lstinputlisting{algoritmos/math/sieve.cpp}
 		\subsection{GCD e LCM}
-			\lstinputlisting{algoritmos/gcdlcm.cpp}
+			\lstinputlisting{algoritmos/math/gcdlcm.cpp}
 		\subsection{Algoritmo de Euclides}
-			\lstinputlisting{algoritmos/euclides.cpp}
+			\lstinputlisting{algoritmos/math/euclides.cpp}
 		\subsection{Combinação}
 			\[ C_n^k = {n! \over {k! \cdot (n - k)!}} \]
-			\lstinputlisting{algoritmos/comb.cpp}
+			\lstinputlisting{algoritmos/math/comb.cpp}
 		\subsection{Floyd's Cycle-Finding}
-			\lstinputlisting{algoritmos/floydcycle.cpp}
+			\lstinputlisting{algoritmos/math/floydcycle.cpp}
 		\subsection{Matrizes}
 			\subsubsection{Decomposição LUP}
 				Determina uma decomposição LUP para a matriz \(A\): \( PA = LU \)
 				Tempo: \( \Theta(n^3) \)
-				\lstinputlisting{algoritmos/lup-decomposition.cpp}
+				\lstinputlisting{algoritmos/math/lup-decomposition.cpp}
 			\subsubsection{Determinante}
-				\lstinputlisting{algoritmos/determinante.cpp}
+				\lstinputlisting{algoritmos/math/determinante.cpp}
 			\subsubsection{Sistemas Lineares}
 				Resolve um sistema de equações lineares da forma \(Ax = B\)
-				\lstinputlisting{algoritmos/sistlinear.cpp}
+				\lstinputlisting{algoritmos/math/sistlinear.cpp}
 		\subsection{Números Complexos}
-			\lstinputlisting{algoritmos/complex.cpp}
+			\lstinputlisting{algoritmos/math/complex.cpp}
 		\subsection{Durand-Kerner}
 			Encontra as raízes de um polinômio:
 			\[ a_0 x^n + a_1 x^{n-1} + \cdot + a_{n-1} x + a_n = 0 \]
-			\lstinputlisting{algoritmos/durand-kerner.cpp}
+			\lstinputlisting{algoritmos/math/durand-kerner.cpp}
 		\subsection{Polinômios}
-			\lstinputlisting{algoritmos/polynomial.cpp}
+			\lstinputlisting{algoritmos/math/polynomial.cpp}
 
 	\section{Grafos}
 		\subsection{Strongly Connected Components}
 			\subsubsection{Kosaraju}
 				Tempo: \( O(V + E) \)
-				\lstinputlisting{algoritmos/kosaraju.cpp}
+				\lstinputlisting{algoritmos/graph/kosaraju.cpp}
 			\subsubsection{Tarjan}
-				\lstinputlisting{algoritmos/tarjan.cpp}
+				\lstinputlisting{algoritmos/graph/tarjan.cpp}
 		\subsection{Caminho mínimo}
 			\subsubsection{Floyd-Warshall}
 				Tempo: \( \Theta(n^3)\)
-				\lstinputlisting{algoritmos/floyd-warshall.cpp}
+				\lstinputlisting{algoritmos/graph/floyd-warshall.cpp}
 			\subsubsection{Dijkstra}
 				Tempo: \( O(|V|^2) \)
-				\lstinputlisting{algoritmos/dijkstra.cpp}
+				\lstinputlisting{algoritmos/graph/dijkstra.cpp}
 			\subsubsection{Dijkstra com Heap}
 				Tempo: \( O((|E| + |V|) \log |V|) \)
-				\lstinputlisting{algoritmos/dijkstra-heap.cpp}
+				\lstinputlisting{algoritmos/graph/dijkstra-heap.cpp}
 			\subsubsection{Bellman-Ford}
 				Tempo: \( O(|V| |E|) \)
-				\lstinputlisting{algoritmos/bellman-ford.cpp}
+				\lstinputlisting{algoritmos/graph/bellman-ford.cpp}
 		\subsection{Kruskal}
 			Tempo: \( O(|E| \log |V|) \) ou \( O(|E| \ldots \alpha(|V|)) \) caso as arestas estejam pré-ordenadas.
-			\lstinputlisting{algoritmos/kruskal.cpp}
+			\lstinputlisting{algoritmos/graph/kruskal.cpp}
 		\subsection{Fluxo Máximo e Corte Mínimo}
 			\subsubsection{Edmonds-Karp}
 				Tempo: \( O(|V| |E|^2) \)
-				\lstinputlisting{algoritmos/ford-fulkerson.cpp}
+				\lstinputlisting{algoritmos/graph/ford-fulkerson.cpp}
 			\subsubsection{Stoer-Wagner}
 				Algoritmo para encontrar o corte mínimo (não s-t) em um grafo. A implementação abaixo é \(O(n^3)\).
-				\lstinputlisting{algoritmos/stoer-wagner.cpp}
+				\lstinputlisting{algoritmos/graph/stoer-wagner.cpp}
 			\subsubsection{Min-Cost Max-Flow}
 				Tempo: \( O(min(n^2 m \cdot fcost, ~ n m \cdot flow) ) \)
-				\lstinputlisting{algoritmos/mincostmaxflow.cpp}
+				\lstinputlisting{algoritmos/graph/mincostmaxflow.cpp}
 			\subsubsection{Kuhn-Munkres}
 				Dado um grafo completo bipartido com pesos $ G = (X \cup Y, X \times Y) $, encontra um matching $M$ de $X$ para $Y$ com peso total máximo. Para encontrar com peso mínimo, basta negar todos os custos.
 
 				Tempo: \( O(n^3) \)
-				\lstinputlisting{algoritmos/kuhn-munkres.cpp}
+				\lstinputlisting{algoritmos/graph/kuhn-munkres.cpp}
 		\subsection{Hopcroft-Karp}
 			Tempo: \( O(|E| \sqrt{|V|})\)
-			\lstinputlisting{algoritmos/hopcroft-karp.cpp}
+			\lstinputlisting{algoritmos/graph/hopcroft-karp.cpp}
 		\subsection{Aresta de Corte}
 			Para grafos não-dirigidos.
-			\lstinputlisting{algoritmos/bridge.cpp}
+			\lstinputlisting{algoritmos/graph/bridge.cpp}
 		\subsection{Ponto de Articulação}
 			Para grafos não-dirigidos.
-			\lstinputlisting{algoritmos/pontoart.cpp}
+			\lstinputlisting{algoritmos/graph/pontoart.cpp}
 		\subsection{Lowest Common Ancestor}
 			Tempo: \( O(V + Q + \alpha(V + Q)) \)
-			\lstinputlisting{algoritmos/lca.cpp}
+			\lstinputlisting{algoritmos/graph/lca.cpp}
 		\subsection{Ciclo Euleriano}
-			\lstinputlisting{algoritmos/ciclo-euleriano.cpp}
+			\lstinputlisting{algoritmos/graph/ciclo-euleriano.cpp}
 		\subsection{Fatos Interessantes}
 			\begin{enumerate}
 				\item Um grafo é bipartido se e somente se não tem ciclo ímpar.
@@ -165,28 +165,28 @@
 	\section{Programação Dinâmica}
 		\subsection{Longest Common Subsequence}
 			Tempo: \( O(nm) \)
-			\lstinputlisting{algoritmos/lcs.cpp}
+			\lstinputlisting{algoritmos/dp/lcs.cpp}
 		\subsection{Longest Increasing Subsequence}
 			Tempo: \( O(n \log n) \)
-			\lstinputlisting{algoritmos/lis.cpp}
+			\lstinputlisting{algoritmos/dp/lis.cpp}
 		%\subsection{Smallest Common Supersequence}
 		%	% TO DO
 		\subsection{Matrix-chain Multiplication}
 			Tempo: \( O(n^3) \)
-			\lstinputlisting{algoritmos/arraymultiplication.cpp}
+			\lstinputlisting{algoritmos/dp/arraymultiplication.cpp}
 		%\subsection{CYK}
 		%	Tempo: \( O(n^3) \)
 		%	% TO DO	
 	\section{Geometria Computacional}
-		\lstinputlisting{algoritmos/geometry-defs.cpp}
+		\lstinputlisting{algoritmos/geometry/geometry-defs.cpp}
 		\subsection{Círculos}
-			\lstinputlisting{algoritmos/circle.cpp}
+			\lstinputlisting{algoritmos/geometry/circle.cpp}
 		\subsection{Intersecção de Segmentos}
-			\lstinputlisting{algoritmos/segments-intersect.cpp}
+			\lstinputlisting{algoritmos/geometry/segments-intersect.cpp}
 		\subsection{Ponto dentro de Polígono}
 			% TODO: os pontos do poligono devem ser dados em alguma ordem?
 			Constante de tempo baixa, não faz uso de funções de trigonometria. Funciona para qualquer polígono simples. Retorna \emph{true} se o ponto está sob um dos lados do polígono (facilmente alterável).
-			\lstinputlisting{algoritmos/inpoly.cpp}
+			\lstinputlisting{algoritmos/geometry/inpoly.cpp}
 		%\subsection{Teste de Convexidade}
 		%	Algoritmo para testar se um polígono é convexo ou não.
 		%	% TODO: só pegar do UVa 10078 e dizer pra qual tipo de polígono funcionam, etc
@@ -194,18 +194,18 @@
 			% TODO: conferir, essas duas funções são, provavelmente, a mesma merda
 			\subsubsection{Convexo}
 				Se o polígono está no sentido anti-horário, a área é positiva. Se estiver no sentido horário, a área é negativa.
-				\lstinputlisting{algoritmos/convex-area.cpp}
+				\lstinputlisting{algoritmos/geometry/convex-area.cpp}
 			\subsubsection{Qualquer}
-				\lstinputlisting{algoritmos/poly-area.cpp}
+				\lstinputlisting{algoritmos/geometry/poly-area.cpp}
 		\subsection{Convex Hull}
 			\subsubsection{Graham Scan}
 				Tempo: \(O(n \log n)\)
-				\lstinputlisting{algoritmos/graham-scan.cpp}
+				\lstinputlisting{algoritmos/geometry/graham-scan.cpp}
 			\subsubsection{Jarvis March}
 				Tempo: \(O(n h)\)
-				\lstinputlisting{algoritmos/jarvis-march.cpp}
+				\lstinputlisting{algoritmos/geometry/jarvis-march.cpp}
 		\subsection{Closest Pair of Points}
-			\lstinputlisting{algoritmos/closest-pair.cpp}
+			\lstinputlisting{algoritmos/geometry/closest-pair.cpp}
 
 	\section{Outros}
 		\subsection{2-SAT}
@@ -237,24 +237,24 @@
 			Mais informações no Cormen, p. 602.
 		\subsection{Kadane 1D}
 			Tempo: \(\Theta(n)\)
-			\lstinputlisting{algoritmos/kadane1d.cpp}
+			\lstinputlisting{algoritmos/others/kadane1d.cpp}
 		\subsection{Kadane 2D}
 			Tempo: \(O(n^3)\)
-			\lstinputlisting{algoritmos/kadane2d.cpp}
+			\lstinputlisting{algoritmos/others/kadane2d.cpp}
 		\subsection{Majority Problem}
 			Encontra o elemento que aparece em mais da metade de um array em \(\Theta(n)\)
-			\lstinputlisting{algoritmos/majority.cpp}
+			\lstinputlisting{algoritmos/others/majority.cpp}
 		\subsection{Stable Marriage}
 			Given $n$ men and $n$ women, where each person has ranked all members of the opposite sex with a unique number between $1$ and $n$ in order of preference, marry the men and women off such that there are no two people of opposite sex who would both rather have each other than their current partners. If there are no such people, all the marriages are \emph{stable}.
 			\subsubsection{Gale-Shapley}
 				Tempo: \(O(n^2)\)
-				\lstinputlisting{algoritmos/stablemarriage.cpp}
+				\lstinputlisting{algoritmos/others/stablemarriage.cpp}
 		\subsection{Números Romanos}
-			\lstinputlisting{algoritmos/romanos.cpp}
+			\lstinputlisting{algoritmos/others/romanos.cpp}
 		\subsection{Calendário}
-			\lstinputlisting{algoritmos/calendario.cpp}
+			\lstinputlisting{algoritmos/others/calendario.cpp}
 		\subsection{Josephus Problem}
-			\lstinputlisting{algoritmos/josephus.cpp}
+			\lstinputlisting{algoritmos/others/josephus.cpp}
 	%\section{Containers STL}
 	%	% TODO: colocar tabela fera igual a do cplusplus.com
 

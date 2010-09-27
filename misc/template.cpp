@@ -2,8 +2,8 @@
 #define FOR(i,m) for(int i = 0; i < m; i++)
 #define FORI(i,m) for(int i = 0; i <= m; i++)
 
-inline int min(int a, int b) { return a < b ? a : b; }
-inline int max(int a, int b) { return a > b ? a : b; }
+int min(int a, int b) { return a < b ? a : b; }
+int max(int a, int b) { return a > b ? a : b; }
 
 int main() {
 	/* ... */
