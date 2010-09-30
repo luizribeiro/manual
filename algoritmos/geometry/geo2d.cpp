@@ -47,6 +47,10 @@ struct l2d {
 		v = p1 - p0;
 	}
 	l2d(p2d p, double m) { s = p, v = p2d(cos(m), sin(m)); }
+	l2d(double a, double b, double c) { // ax + by = c
+		if(fabs(a) < EPS) v = p2d(1, -a/b), s = p2d(0, c/b);
+		else v = p2d(-b/a, 1), s = p2d(c/a, 0);
+	}
 
 	bool point_on_line(p2d p){ return (v * (p - s)) == 0; } // dat = double?
 	double slope() { return v.y/(double)v.x; }
