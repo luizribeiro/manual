@@ -61,9 +61,9 @@ struct c2d {
 	double r;
 
 	c2d(){}
-	c2d(p2d p0, p2d p1, double _r){
-		p2d mid = (p1 + p0)/(double)2, v = (p1 - p0);
-		double q = p0.dist(p1), d = sqrt(r * r - q * q / (double) 4);
+	c2d(p2d p0, p2d p1, double _r){ // cuidado: supoe que r >= p0.dist(p1)/2
+		p2d mid = (p1 + p0)/2.0, v = (p1 - p0);
+		double q = p0.dist(p1), d = sqrt(r*r - q*q/4.0);
 		v = v / v.mod();
 		swap(v.x, v.y);
 		v.x = -v.x;
@@ -74,6 +74,7 @@ struct c2d {
 
 	};
 
+	bool p2d_inside(p2d p){ return center.dist(p) - r < EPS; } // d - r <= 0
 	void tangents(p2d p, l2d &t1, l2d &t2) {
 		p2d dir = p - center;
 		double dang = atan2(dir.y, dir.x);
