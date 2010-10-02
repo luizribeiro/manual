@@ -31,7 +31,7 @@ struct p2d {
 	double ang(p2d p){ return atan2(*this * p, *this ^ p); } // [-pi,pi]
 	double point_line_segment_distance(p2d p0, p2d p1){
 		p2d v1 = *this - p0, v2 = p1 - p0;
-		double u = (v1 ^ v2)/v2.mod2();
+		double u = (v1 ^ v2)/v2.mod();
 		if(u < -EPS) return (*this).dist(p0);
 		if(u - 1 > EPS) return (*this).dist(p1);
 		return (*this).dist(p0 + v2 * u);
@@ -44,7 +44,7 @@ struct l2d {
 	l2d(){}
 	l2d(p2d p0, p2d p1){
 		s = p2d(p0.x, p0.y);
-		v = p1 - p0;
+		v = p1 - p0, v = v/v.mod();
 	}
 	l2d(p2d p, double m) { s = p, v = p2d(cos(m), sin(m)); }
 	l2d(double a, double b, double c) { // ax + by = c
@@ -57,26 +57,26 @@ struct l2d {
 };
 
 struct c2d {
-	p2d center;
+	p2d c;
 	double r;
 
 	c2d(){}
-	c2d(p2d p0, p2d p1, double _r){ // cuidado: supoe que r >= p0.dist(p1)/2
+	c2d(p2d p0, p2d p1, double _r) { // cuidado: supoe que r >= p0.dist(p1)/2
 		p2d mid = (p1 + p0)/2.0, v = (p1 - p0);
 		double q = p0.dist(p1), d = sqrt(r*r - q*q/4.0);
 		v = v / v.mod();
 		swap(v.x, v.y);
 		v.x = -v.x;
-		center = mid + v * d;
+		c = mid + v * d;
 		r = _r;
 	};
 	c2d(p2d p0, p2d p1, p2d p2){
 
 	};
 
-	bool p2d_inside(p2d p){ return center.dist(p) - r < EPS; } // d - r <= 0
+	bool p2d_inside(p2d p) { return c.dist(p) - r < EPS; } // d - r <= 0
 	void tangents(p2d p, l2d &t1, l2d &t2) {
-		p2d dir = p - center;
+		p2d dir = p - c;
 		double dang = atan2(dir.y, dir.x);
 		double tang = asin(r/dir.mod());
 		t1 = l2d(p, dang + tang);
@@ -85,30 +85,40 @@ struct c2d {
 };
 
 double l2d_p2d_distance(l2d l, p2d p) {
-	double u = ((p - l.s) ^ l.v)/l.v.mod2();
+	double u = (p - l.s) ^ l.v;
 	return p.dist(l.s + l.v * u);
 }
 
-int c2d_c2d_intersection(c2d c1, c2d c2, p2d &p0, p2d &p1) {
-	// TODO
-	return 0;
-}
-
 int c2d_l2d_intersection(c2d c, l2d l, p2d &p1, p2d &p2) {
-	double d = l2d_p2d_distance(l, c.center);
+	double d = l2d_p2d_distance(l, c.c);
 	if(d - c.r > EPS) return 0; // d > c.r => l2d nao corta a c2d
 	else if(fabs(d - c.r) < EPS) {
-		p1 = l.s + l.v*(((c.center - l.s) ^ l.v)/l.v.mod2());
+		p1 = l.s + l.v*((c.c - l.s) ^ l.v);
 		return 1; // d == c.r => l2d tangencia a c2d
 	} else {
-		p2d pc = l.s + l.v*(((c.center - l.s) ^ l.v)/l.v.mod2());
-		double u = sqrt(c.r*c.r - d*d)/l.v.mod2();
+		p2d pc = l.s + l.v*((c.c - l.s) ^ l.v);
+		double u = sqrt(c.r*c.r - d*d);
 		p1 = pc + l.v*u;
 		p2 = pc - l.v*u;
 		return 2; // d < c.r => l2d forma uma corda em c2d
 	}
 }
 
+l2d l2d_perpendicular(l2d l, p2d p) { // reta perpendicular a l, passando por p
+	return l2d(p, p + p2d(-l.v.y, l.v.x));
+}
+
+// cuidado se c1 e c2 forem coincidentes
+int c2d_c2d_intersection(c2d c1, c2d c2, p2d &p1, p2d &p2) {
+	double d = c1.c.dist(c2.c);
+	if(c1.r + c2.r - d < -EPS || fabs(c1.r - c2.r) - d > EPS) return 0;
+	l2d l = l2d(c1.c, c2.c);
+	double x = (d*d - c2.r*c2.r + c1.r*c1.r)/(2*d); // distancia de c1.c ao eixo radical
+	l2d r = l2d_perpendicular(l, l.s + l.v*x); // eixo radical
+	return c2d_l2d_intersection(c1, r, p1, p2);
+}
+
+// cuidado se l1 e l2 forem coincidentes
 int l2d_l2d_intersection(l2d l1, l2d l2, p2d &pi){
 	p2d p1 = p2d(l1.s.x, l1.s.y), p2 = l1.s + l1.v;
 	p2d p3 = p2d(l2.s.x, l2.s.y), p4 = l2.s + l2.v;
