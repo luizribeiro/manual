@@ -111,9 +111,8 @@ l2d l2d_perpendicular(l2d l, p2d p) { // reta perpendicular a l, passando por p
 // cuidado se c1 e c2 forem coincidentes
 int c2d_c2d_intersection(c2d c1, c2d c2, p2d &p1, p2d &p2) {
 	double d = c1.c.dist(c2.c);
-	if(c1.r + c2.r - d < -EPS || fabs(c1.r - c2.r) - d > EPS) return 0;
-	l2d l = l2d(c1.c, c2.c);
 	double x = (d*d - c2.r*c2.r + c1.r*c1.r)/(2*d); // distancia de c1.c ao eixo radical
+	l2d l = l2d(c1.c, c2.c);
 	l2d r = l2d_perpendicular(l, l.s + l.v*x); // eixo radical
 	return c2d_l2d_intersection(c1, r, p1, p2);
 }
