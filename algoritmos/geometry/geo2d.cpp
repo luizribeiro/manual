@@ -31,7 +31,7 @@ struct p2d {
 	double ang(p2d p){ return atan2(*this * p, *this ^ p); } // [-pi,pi]
 	double point_line_segment_distance(p2d p0, p2d p1){
 		p2d v1 = *this - p0, v2 = p1 - p0;
-		double u = (v1 ^ v2)/v2.mod();
+		double u = (v1 ^ v2)/v2.mod2();
 		if(u < -EPS) return (*this).dist(p0);
 		if(u - 1 > EPS) return (*this).dist(p1);
 		return (*this).dist(p0 + v2 * u);
