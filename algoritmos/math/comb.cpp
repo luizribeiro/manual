@@ -17,3 +17,14 @@ long long C(int n, int k){
 	} 
 	return numerator / denominator; 
 }
+
+////// ou precalcular:
+
+long long C[CC][CC];
+
+void calcC(void) {
+	for(int i = 0; i < CC; i++) {
+		C[i][0] = 1, C[i][i+1] = 0;
+		for(int j = 1; j <= i; j++) C[i][j] = C[i-1][j-1] + C[i-1][j];
+	}
+}

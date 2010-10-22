@@ -1,4 +1,3 @@
-/* Geometry 2D {{{ */
 #include <cmath>
 #include <algorithm>
 using namespace std;
@@ -128,4 +127,3 @@ int l2d_l2d_intersection(l2d l1, l2d l2, p2d &pi){
 	pi = p2d(x, y)/den;
 	return 1; // pi = ponto de intersecao
 }
-/* }}} */

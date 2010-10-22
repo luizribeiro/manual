@@ -156,7 +156,7 @@
 				\item \textbf{Ciclo Euleriano}. Um grafo não-dirigido possui ciclo euleriano se todos os vértices têm grau par e o \emph{grafo é conexo}. Um grafo dirigido admite caso $in[v] = out[v] ~ \forall ~ v \in V$.
 				\item \textbf{Caminho Euleriano}. Um grafo não-dirigido possui caminho euleriano se apenas dois vértices tem grau ímpar e o \emph{grafo é conexo}.
 				\begin{enumerate}
-					\item \textbf{Algoritmo de Fleury}. Usado para gerar um caminho euleriano. Escolha um dos dois nós pares como nó inicial e visite-o, escolha sempre uma aresta que não seja uma ponte no grafo reduzido (a não ser que não exista outra alternativa), atravesse a aresta escolhida e visite o nó seguinte.
+					\item \textbf{Algoritmo de Fleury}. Usado para gerar um caminho euleriano. Escolha um dos dois nós ímpares como nó inicial e visite-o, escolha sempre uma aresta que não seja uma ponte no grafo reduzido (a não ser que não exista outra alternativa), atravesse a aresta escolhida e visite o nó seguinte.
 				\end{enumerate}
 				\item \textbf{Teorema de Erdös-Gallai}. Dada uma seqüência de $n$ inteiros $\{d_1, d_2, \ldots, d_n\}$, com $n-1 \geq d_1 \geq d_2 \geq \ldots \geq d_n \geq 0$. Os números da seqüência podem representar os graus dos vértices de um grafo simples não-dirigido \emph{sse} $\sum d_i$ for par e $d_1 + \ldots + d_k \leq k (k - 1) + \sum_{i=k+1}^n \min(k, d_i)$ para todo $k = 1, 2, \ldots, n - 1$.
 				\item \textbf{Teorema de Menger}. Dado um grafo não-dirigido e dois vértices distintos $x$ e $y$, o número de arestas cuja remoção desconecta $x$ e $y$ é igual ao número de caminhos aresta-independentes de $x$ para $y$. O mesmo teorema é válido para vértices.
@@ -179,8 +179,8 @@
 		%	% TO DO	
 	\section{Geometria Computacional}
 		\lstinputlisting{algoritmos/geometry/geometry-defs.cpp}
-		\subsection{Círculos}
-			\lstinputlisting{algoritmos/geometry/circle.cpp}
+		\subsection{Geometria Básica 2D}
+			\lstinputlisting{algoritmos/geometry/geo2d.cpp}
 		\subsection{Intersecção de Segmentos}
 			\lstinputlisting{algoritmos/geometry/segments-intersect.cpp}
 		\subsection{Ponto dentro de Polígono}
@@ -255,6 +255,8 @@
 			\lstinputlisting{algoritmos/others/calendario.cpp}
 		\subsection{Josephus Problem}
 			\lstinputlisting{algoritmos/others/josephus.cpp}
+		\subsection{KMP}
+			\lstinputlisting{algoritmos/others/kmp.cpp}
 	%\section{Containers STL}
 	%	% TODO: colocar tabela fera igual a do cplusplus.com
 
