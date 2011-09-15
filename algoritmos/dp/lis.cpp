@@ -1,45 +1,25 @@
-int b[MAX]; // ARRAY DE INDICES DA LIS
-int p[MAX]; // ARARY DE PREDECESSORES
-int nums[MAX]; // ARRAY DE NUMEROS
-void lis(int n){
-	if (n < 1) return;
-	int i, u, v, tail = -1;
-	b[++tail] = 0;
-	memset(p,-1,sizeof(int)*n);
+template <typename _T>
+vector<_T> lis(vector<_T>& seq){
+	int i, m, n = seq.size(), u, tail = 0,  v;
+	if (n < 1) return vector<_T>();
+	vector<int> p(n, -1);
+	vector<_T> ret(1, 0);
 	for (i = 1; i < n; i++) {
-		/* 
-		 * Se o numero atual(nums[i])for maior
-		 * que o ultimo elemento da LIS
-		 * insira-o no fim da LIS e va
-		 * para o proximo numero
-		 */
-		if (nums[b[tail]] < nums[i]) {
-			p[i] = b[tail];
-			b[++tail] = i;
+		if(seq[ret[tail]] < seq[i]){ // simply extend sequence
+			p[i] = ret[tail++];
+			ret.push_back(i);
 			continue;
 		}
-		/* 
-		 * Busca binaria para encontrar
-		 * o melhor lugar para inserir
-		 * o numero atual (nums[i])
-		 */
-		for (u = 0, v = tail; u < v;) {
-			int c = (u + v)>>1;
-			if (nums[b[c]] < nums[i]) u=c+1; else v=c;
-		}
- 		/*
-		 * Substitui o elemento da posicao
-		 * u da LIS se, e somente se, 
-		 * o numero atual for menor que ele
-		 */
-		if (nums[i] < nums[b[u]]) {
-			if (u) p[i] = b[u-1];
-			b[u] = i;
+		// binary search for best position to insert current element
+		for (m = tail >> 1, u = 0, v = tail; u < v; m = (u + v) >> 1) 
+			if (seq[ret[m]] < seq[i]) u = m + 1;
+			else v = m;
+		if (seq[i] < seq[ret[u]]) {
+			if(u) p[i] = ret[u - 1];
+			ret[u] = i;
 		}	
 	}
-	/* arruma o array de predecessores */
-	for (u = tail+1, v = b[tail]; u--; v = p[v]) b[u] = v;
-	/* print */
-	for(i =0; i <= tail; i++) printf("%d\n",nums[b[i]]);
+	for(u = tail + 1, v = ret[tail]; u--; v = p[v]) ret[u] = seq[v];
+	return ret;
 }
 
