@@ -1,51 +1,47 @@
-int w[MAX_NODES][MAX_NODES];	/* matriz de adjacencia */
-int num_nodes;					/* numero de nos */
+int n;
+vector<int> adj[NN];
+stack< pair<int, int> > s;									// BCC
+int num[NN], low[NN];
+int cnt;
 
-/* variaveis do bridgeR */
-int cnt, lbl[MAX_NODES], low[MAX_NODES], parnt[MAX_NODES];
-int bcnt;						/* numero de bridges */
+void dfs(int u, int prnt = -1) {
+	low[u] = num[u] = cnt++;
 
-void bridgeR(int v) {
-	int x;
+	for(int i = 0; i < (int)adj[u].size(); i++) {
+		int v = adj[u][i];
+		if(num[v] == -1) {
+			s.push(make_pair(u, v));						// BCC
+			dfs(v, u);
+			low[u] = min(low[u], low[v]);
 
-	lbl[v] = cnt++;
-	low[v] = lbl[v];
-
-	for(x = 0; x < num_nodes; x++) {
-		if(!w[v][x])
-			/* se x nao eh adjacente a v, continue */
-			continue;
-
-		if(lbl[x] == -1) {
-			/* se x nao foi visitado ainda, visite */
-			parnt[x] = v;
-			bridgeR(x);
-
-			if(low[v] > low[x]) low[v] = low[x];
-			if(low[x] == lbl[x]) {
-				/* v-x eh uma ponte */
-				printf("%d-%d\n", v, x);
-				bcnt++;
+			if((num[u] != 0 && low[v] >= num[u]) || (num[u] == 0 && num[v] != 1)) {
+				/* u eh pto de articulacao */
+				printf("found cut vertex: %d\n", u);
 			}
-		} else if(x != parnt[v] && low[v] > lbl[x]) {
-			low[v] = lbl[x];
+
+			/* Biconnected Components */
+			if(low[v] >= num[u]) {
+				printf("found biconnected component: ");
+				for(pair<int,int> p; p != make_pair(u,v); s.pop()) {
+					p = s.top();
+					printf("%d-%d ", p.first, p.second);
+				}
+				printf("\n");
+			}
+
+			if(low[v] == num[v]) {
+				/* u-v eh ponte */
+				printf("found bridge: %d-%d\n", u, v);
+			}
+		} else if(v != prnt) {
+			if(num[v] < num[u]) s.push(make_pair(u, v));	// BCC
+			low[u] = min(low[u], num[v]);
 		}
 	}
 }
 
-void all_bridges() {
-	int v;
-
-	bcnt = cnt = 0;
-
-	for(v = 0; v < num_nodes; v++)
-		lbl[v] = -1;
-
-	for(v = 0; v < num_nodes; v++) {
-		if(lbl[v] == -1) {
-			parnt[v] = v;
-			bridgeR(v);
-		}
-	}
+void findcuts(void) {
+	memset(num, -1, sizeof(num));
+	for(int i = 0; i < n; i++)
+		if(num[i] == -1) cnt = 0, dfs(i);
 }
-
