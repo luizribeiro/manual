@@ -1,8 +1,7 @@
-long long gcd(long long a, long long b) { 
-	if(a % b == 0) return b;
-	return gcd(b, a % b);
-} 
+template<class _T> _T gcd(_T a, _T b) {
+    return a ? gcd(b%a, a) : b;
+}
 
-long long lcm(long long a, long long b) {
-	return a * b / gcd(a, b);
+template<class _T> _T lcm(_T a, _T b) {
+    return a * b / gcd(a, b);
 }
