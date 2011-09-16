@@ -25,3 +25,10 @@ void kmp(void) {
 		} else if(i) i = f[i], j--;
 	}
 }
+
+/* KMP's properties {{{
+
+if(f[i] > 0 && (i % (i - f[i])) == 0)
+	prefix with size i is periodic, with period length = (i - f[i])
+
+}}} */
