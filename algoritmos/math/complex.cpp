@@ -16,4 +16,6 @@ struct im {
 
 	double abs2() { return a*a + b*b; }
 	bool operator==(im x) const { return fabs(a-x.a) < EPS && fabs(b-x.b) < EPS; }
+
+	bool isReal() { return fabs(b) < EPS; }
 };
