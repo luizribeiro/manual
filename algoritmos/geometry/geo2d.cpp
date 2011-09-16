@@ -83,6 +83,16 @@ struct c2d {
 	}
 };
 
+// returns true if a->b->c is a counter-clockwise turn
+bool ccw(p2d& a, p2d& b, p2d& c){
+	return ((b - a) * (c - a) < 0);
+}
+
+// returns true if line segments ab and cd intersect 
+bool intersect(p2d& a, p2d& b, p2d& c, p2d& d){
+	return(ccw(a,c,d) != ccw(b,c,d) && ccw(a,b,c) != ccw(a,b,d));
+}
+
 double l2d_p2d_distance(l2d l, p2d p) {
 	double u = (p - l.s) ^ l.v;
 	return p.dist(l.s + l.v * u);
