@@ -1,30 +1,31 @@
-int idx[4000], nnnn, low[4000], SCC[4000], stack[4000], scc_count, top;
-bool stacked[4000], NO;
-void push(int a){
-	stack[top++] = a;
-	stacked[a] = 1;
-}
-int pop(){
-	stacked[stack[--top]] = 0;
-	return stack[top];
-}
-void tarjan(int k){
+int n;
+vector<int> adj[NN];
+int num[NN], low[NN], scc[NN];
+int cnt, scccnt;
+stack<int> s;
 
-	idx[k] = low[k] = nnnn = nnnn+1;
-	stack[top++] = k;
-	stacked[k] = 1;
-	for(typeof(adj[k].begin())it = adj[k].begin(); it != adj[k].end(); it++){
-		int nadj = (*it);
-		if(idx[nadj] == -1){
-			tarjan(nadj);
-			low[k] = MIN(low[k],low[nadj]);
-		} else if(stacked[nadj]) {
-			low[k] = MIN(low[k],idx[nadj]);
-		}		
+void dfs(int u) {
+	num[u] = low[u] = cnt++;
+	s.push(u);
+	for(int i = 0; i < (int)adj[u].size(); i++) {
+		int v = adj[u][i];
+		if(num[v] == -1) {
+			dfs(v);
+			low[u] = min(low[u], low[v]);
+		} else if(scc[v] == -1) {
+			low[u] = min(low[u], num[v]);
+		}
 	}
-	if(low[k] == idx[k]){
-		scc_count++;
-		int x = -1;
-		while(x != k)SCC[x = pop()] = scc_count;
+
+	if(low[u] == num[u]) {
+		for(int v = -1; v != u; s.pop()) scc[v = s.top()] = scccnt;
+		scccnt++;
 	}
+}
+
+void findscc(void) {
+	for(int i = 0; i < n; i++) num[i] = scc[i] = -1;
+	scccnt = 0;
+	for(int i = 0; i < n; i++)
+		if(num[i] == -1) cnt = 0, dfs(i);
 }
