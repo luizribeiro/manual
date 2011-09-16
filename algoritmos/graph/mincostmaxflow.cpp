@@ -1,70 +1,53 @@
-int n;
-int f[NN][NN], cap[NN][NN], cost[NN][NN]; /* fluxo, capacidade, custo */
-list< pair<int, int> > edges; /* lista de adjacencias */
+const int INF = 0x3f3f3f3f;
 
-int p[NN], d[NN]; /* previous, dists do bellman-ford */
+int nno, ned;
+struct edge {
+	int u, v, cost, cap, flow, next;
+	edge(int _u, int _v, int _cost, int _cap, int _next = -1) :
+		u(_u), v(_v), cost(_cost), cap(_cap), next(_next) { flow = 0; }
+};
+vector<edge> edges;
+vector<int> first, prev;
 
 int bellmanford(int s, int t) {
-	int i;
-
-	for(i = 0; i < n; i++) d[i] = INF;
-
+	vector<int> d(nno, INF);
+	prev = vector<int>(nno, -1);
 	d[s] = 0;
-	p[s] = -1;
-
-	for(i = 0; i < n; i++) {
-		bool troca = false;
-		foreach(e, edges) {
-			int u = e->first, v = e->second;
-
-			/* tenta reduzir fluxo v->u */
-			if(f[v][u] && d[v] > d[u] - cost[v][u]) {
-				p[v] = u;
-				d[v] = d[u] - cost[v][u];
-				troca = true;
-			}
-
-			/* tenta reforcar fluxo u->v */
-			if(f[u][v] < cap[u][v] && d[v] > d[u] + cost[u][v]) {
-				p[v] = u;
-				d[v] = d[u] + cost[u][v];
-				troca = true;
+	for(int k = 0; k < nno; k++) {
+		bool ok = true;
+		for(int i = 0; i < ned; i++) {
+			int u = edges[i].u, v = edges[i].v;
+			if(edges[i].cap - edges[i].flow > 0 && d[v] > d[u] + edges[i].cost) {
+				prev[v] = i;
+				d[v] = d[u] + edges[i].cost;
+				ok = false;
 			}
 		}
-		if(!troca) break;
+		if(ok) break;
 	}
-
 	return d[t];
 }
 
 void mincostmaxflow(int &fcost, int &flow, int s, int t) {
-	int i, j;
-
-	/* inicia rede de fluxos */
 	fcost = flow = 0;
-	for(i = 0; i < n; i++)
-		for(j = 0; j < n; j++)
-			f[i][j] = 0;
-
 	while(bellmanford(s, t) < INF) {
 		int cf = INF;
-
-		/* encontra gargalo */
-		for(i = t; p[i] >= 0; i = p[i])
-			if(f[i][p[i]]) cf = min(cf, f[i][p[i]]);
-			else cf = min(cf, cap[p[i]][i] - f[p[i]][i]);
-
-		/* atualiza rede residual */
-		for(i = t; p[i] >= 0; i = p[i]) {
-			if(f[i][p[i]]) {
-				f[i][p[i]] -= cf;
-				fcost -= cf * cost[i][p[i]];
-			} else {
-				f[p[i]][i] += cf;
-				fcost += cf * cost[p[i]][i];
-			}
+		for(int i = prev[t]; i != -1; i = prev[edges[i].u])
+			cf = min(cf, edges[i].cap - edges[i].flow);
+		for(int i = prev[t]; i != -1; i = prev[edges[i].u]) {
+			edges[i].flow += cf, edges[i^1].flow -= cf;
+			fcost += cf * edges[i].cost;
 		}
-
 		flow += cf;
 	}
+}
+
+void reset(int n) {
+	nno = n, ned = 0, edges.clear();
+	first = vector<int>(nno, -1);
+}
+
+void addedge(int u, int v, int cost, int cap) {
+	edges.push_back(edge(u, v,  cost, cap, first[u])); first[u] = ned++;
+	edges.push_back(edge(v, u, -cost,   0, first[v])); first[v] = ned++;
 }
