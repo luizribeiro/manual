@@ -1,26 +1,25 @@
-int n, m;
-int adj[NN][NN], deg[NN];
-int anc[NN], col[NN]; /* inicializar ancestor = -1, col = 0 */
-int qn, qu[NN], qv[NN]; /* queries (u,v) */
-
-void tarjanlca(int u) { /* chame inicialmente na raiz */
-	int i, v;
-	makeset(u);
-	anc[u] = u;
-	for(i = 0; i < deg[u]; i++) {
-		v = adj[u][i];
-		if(anc[v] == -1) { /* verifica se foi visitado */
-			tarjanlca(v);
-			unionset(u, v);
-			anc[findset(u)] = u;
-		}
-	}
-	col[u] = 1;
-	for(i = 0; i < qn; i++) {
-		/* procura nas queries */
-		if(qu[i] == u && col[qv[i]])
-			printf("LCA(%d, %d) = %d\n", u+1, qv[i]+1, anc[findset(qv[i])]+1);
-		if(qu[i] != qv[i] && qv[i] == u && col[qu[i]])
-			printf("LCA(%d, %d) = %d\n", u+1, qu[i]+1, anc[findset(qu[i])]+1);
-	}
+// P deve ser inicializado com -1
+int P[NN][LOGNN], L[NN]; // P[i][j] pai de i 2^j niveis acima, L[i] nivel de i
+int N; // Numero de nos
+void compute_lca(){ // Pre-computacao em O(NlogN)
+	for(int j = 1; (1 << j) < N; ++j)
+		for(int i = 0; i < N; ++i)
+			if(P[i][j - 1] != -1)
+				P[i][j] = P[P[i][j - 1]][j - 1];
 }
+// Consulta, retorna o LCA de p e q
+int query(int p, int q) { // Consulta em O(logN)
+	int log, i;
+	if (L[p] < L[q]) p ^= q ^= p ^= q;
+	for (log = 1; 1 << log <= L[p]; log++);
+	log--;
+	for (i = log; i >= 0; i--)
+		if (L[p] - (1 << i) >= L[q])
+			p = P[p][i];
+	if (p == q) return p;
+	for (i = log; i >= 0; i--)
+		if (P[p][i] != -1 && P[p][i] != P[q][i])
+			p = P[p][i], q = P[q][i];
+	return P[p][0];
+}
+
